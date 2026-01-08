@@ -1,0 +1,117 @@
+{
+    "stats_2025": {
+        "tonnage_incinere": 74698,
+        "mwh_electrique": 35093,
+        "mwh_thermique": 21519,
+        "heures_fonct": 7822,
+        "dispo_pourcentage": 89.3
+    },
+    "historique": {
+        "tonnage_cumule": 915206,
+        "invest_initial": 61000000,
+        "etudes_heures": 100000,
+        "tubes_chaudiere_km": 30
+    },
+    "production_history": [
+        {
+            "annee": 2011,
+            "tonnage": 35000,
+            "mwh_electrique": 16121,
+            "mwh_thermique": 9800
+        },
+        {
+            "annee": 2012,
+            "tonnage": 55000,
+            "mwh_electrique": 26108,
+            "mwh_thermique": 13860
+        },
+        {
+            "annee": 2013,
+            "tonnage": 56200,
+            "mwh_electrique": 25093,
+            "mwh_thermique": 15736
+        },
+        {
+            "annee": 2014,
+            "tonnage": 57400,
+            "mwh_electrique": 26438,
+            "mwh_thermique": 14464
+        },
+        {
+            "annee": 2015,
+            "tonnage": 58600,
+            "mwh_electrique": 27817,
+            "mwh_thermique": 16408
+        },
+        {
+            "annee": 2016,
+            "tonnage": 59800,
+            "mwh_electrique": 26700,
+            "mwh_thermique": 15069
+        },
+        {
+            "annee": 2017,
+            "tonnage": 61000,
+            "mwh_electrique": 28096,
+            "mwh_thermique": 17080
+        },
+        {
+            "annee": 2018,
+            "tonnage": 62200,
+            "mwh_electrique": 29526,
+            "mwh_thermique": 15674
+        },
+        {
+            "annee": 2019,
+            "tonnage": 63400,
+            "mwh_electrique": 28308,
+            "mwh_thermique": 17752
+        },
+        {
+            "annee": 2020,
+            "tonnage": 64600,
+            "mwh_electrique": 29754,
+            "mwh_thermique": 16279
+        },
+        {
+            "annee": 2021,
+            "tonnage": 69578,
+            "mwh_electrique": 31956,
+            "mwh_thermique": 23855
+        },
+        {
+            "annee": 2022,
+            "tonnage": 64590,
+            "mwh_electrique": 32148,
+            "mwh_thermique": 18813
+        },
+        {
+            "annee": 2023,
+            "tonnee": 67729,
+            "mwh_electrique": 28060,
+            "mwh_thermique": 19862
+        },
+        {
+            "annee": 2024,
+            "tonnage": 77213,
+            "mwh_electrique": 31670,
+            "mwh_thermique": 19606
+        },
+        {
+            "annee": 2025,
+            "tonnage": 74698,
+            "mwh_electrique": 35093,
+            "mwh_thermique": 21519
+        }
+    ],
+    "pedagogie": {
+        "smartphones_recharges": 89333333,
+        "douches_chaudes": 12862800,
+        "tours_eiffel_poids": 91.5
+    },
+    "metadata": {
+        "last_update": "2026-01-08",
+        "source": "Fichiers de pesées & TDB 2025 (Simulé pour historique)",
+        "real_scanned_history": 915206
+    }
+}

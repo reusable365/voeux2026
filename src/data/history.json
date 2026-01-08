@@ -1,0 +1,22 @@
+{
+  "key_milestones": {
+    "1973": "Mise en service de l'unité historique (ancienne génération).",
+    "2009": "Début des travaux de la nouvelle UVE (61M€ d'investissement).",
+    "2011": "Mise en service le 1er août après 100 000h d'études.",
+    "2012": "Certification SMI et ISO 14001.",
+    "2025": "Record de performance : 74 698t valorisées et 21 519 MWh livrés à Coriance."
+  },
+  "technical_stats": {
+    "boiler_tubes_km": 30,
+    "boiler_weight_tons": 250,
+    "turbine_power_mw": 5.5,
+    "heat_exchanger_capacity_mw": 10,
+    "annual_availability_hours": 8000
+  },
+  "impact_2025": {
+    "tonnage": 74698,
+    "electricity_mwh": 35093,
+    "heat_mwh": 21519,
+    "availability_h": 7822
+  }
+}
