@@ -15,6 +15,17 @@ const robotoMono = Roboto_Mono({
 export const metadata: Metadata = {
   title: "SOVALEM 2026 | Expérience Scrollytelling",
   description: "Découvrez l'histoire et les performances de l'unité de valorisation énergétique SOVALEM.",
+  manifest: "/manifest.json",
+  themeColor: "#E2001A",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "SOVALEM 2026",
+  },
+  icons: {
+    icon: "/icon-512.png",
+    apple: "/icon-512.png",
+  },
 };
 
 export default function RootLayout({

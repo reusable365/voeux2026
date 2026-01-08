@@ -1,0 +1,18 @@
+{
+  "name": "SOVALEM 2026",
+  "short_name": "SOVALEM 2026",
+  "description": "Expérience interactive de l'unité de valorisation énergétique SOVALEM",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#09090b",
+  "theme_color": "#E2001A",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

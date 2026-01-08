@@ -30,15 +30,15 @@ export default function EnergyTerritory() {
                     </p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 items-stretch">
                     {/* Electricity Flow Block */}
-                    <div className="h-40 relative bg-zinc-950/50 rounded-xl border border-zinc-900 overflow-hidden shadow-inner flex items-center justify-center">
+                    <div className="h-32 md:h-40 relative bg-zinc-950/50 rounded-xl border border-zinc-900 overflow-hidden shadow-inner flex items-center justify-center">
                         <ParticleFlow color="#3b82f6" count={80} />
                         <motion.span
                             initial={{ opacity: 0.1, clipPath: "inset(0 100% 0 0)" }}
                             whileInView={{ opacity: 0.6, clipPath: "inset(0 0% 0 0)" }}
                             transition={{ duration: 5, ease: "easeInOut" }}
-                            className="absolute text-blue-500/80 font-black text-6xl tracking-[0.2em] uppercase select-none pointer-events-none text-center"
+                            className="absolute text-blue-500/80 font-black text-4xl md:text-6xl tracking-[0.15em] md:tracking-[0.2em] uppercase select-none pointer-events-none text-center"
                             style={{ textShadow: "0 0 20px rgba(59, 130, 246, 0.3)" }}
                         >
                             ELEC
@@ -46,13 +46,13 @@ export default function EnergyTerritory() {
                     </div>
 
                     {/* Heat Flow Block */}
-                    <div className="h-40 relative bg-zinc-950/50 rounded-xl border border-zinc-900 overflow-hidden shadow-inner flex items-center justify-center">
+                    <div className="h-32 md:h-40 relative bg-zinc-950/50 rounded-xl border border-zinc-900 overflow-hidden shadow-inner flex items-center justify-center">
                         <ParticleFlow color="#f97316" count={80} direction="right" />
                         <motion.span
                             initial={{ opacity: 0.1, clipPath: "inset(0 100% 0 0)" }}
                             whileInView={{ opacity: 0.6, clipPath: "inset(0 0% 0 0)" }}
                             transition={{ duration: 5, ease: "easeInOut" }}
-                            className="absolute text-orange-500/80 font-black text-6xl tracking-[0.2em] uppercase select-none pointer-events-none text-center"
+                            className="absolute text-orange-500/80 font-black text-3xl md:text-6xl tracking-[0.1em] md:tracking-[0.2em] uppercase select-none pointer-events-none text-center"
                             style={{ textShadow: "0 0 20px rgba(249, 115, 22, 0.3)" }}
                         >
                             CHALEUR
