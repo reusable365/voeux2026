@@ -6,7 +6,7 @@ import { Zap, Flame, Mountain, Recycle, Factory, Users } from "lucide-react";
 
 // Données cumulées depuis 2011 (sources: rapports d'activité 2021-2024)
 const CUMUL_DATA = {
-    tonnage: 903467,           // tonnes valorisées
+    tonnage: 978165,           // tonnes valorisées
     electricite_mwh: 388000,   // MWh électriques cumulés
     chaleur_mwh: 210000,       // MWh thermiques cumulés
     machefers_tonnes: 200000,  // ~14 000 t/an x 15 ans (rapports 2021-2024)

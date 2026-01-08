@@ -7,7 +7,7 @@
         "dispo_pourcentage": 89.3
     },
     "historique": {
-        "tonnage_cumule": 915206,
+        "tonnage_cumule": 978165,
         "invest_initial": 61000000,
         "etudes_heures": 100000,
         "tubes_chaudiere_km": 30
@@ -87,7 +87,7 @@
         },
         {
             "annee": 2023,
-            "tonnee": 67729,
+            "tonnage": 67729,
             "mwh_electrique": 28060,
             "mwh_thermique": 19862
         },
@@ -112,6 +112,6 @@
     "metadata": {
         "last_update": "2026-01-08",
         "source": "Fichiers de pesées & TDB 2025 (Simulé pour historique)",
-        "real_scanned_history": 915206
+        "real_scanned_history": 978165
     }
 }

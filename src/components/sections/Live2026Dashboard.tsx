@@ -64,7 +64,7 @@ interface CertificateModalProps {
 
 // Données cumulées depuis 2011
 const CUMUL_STATS = {
-    tonnes: 903467,
+    tonnes: 978165,
     elec_gwh: 388,
     chaleur_gwh: 210,
     tours_eiffel: 90,

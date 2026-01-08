@@ -8,7 +8,7 @@ import MatterCard from "../ui/MatterCard";
 // Cumulative data since 2011 (estimated from production_history)
 const CUMUL_ELEC_MWH = 388000; // ~388 GWh since 2011
 const CUMUL_HEAT_MWH = 210000; // ~210 GWh since 2011
-const CUMUL_TONNAGE = 903000; // tonnes
+const CUMUL_TONNAGE = 978165; // tonnes
 
 export default function ForgeDesRessources() {
     return (
