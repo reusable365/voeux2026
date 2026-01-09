@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 import { useState, useEffect, useRef, useCallback } from "react";
-import { Zap, Flame, Trash2, Download, X, Award } from "lucide-react";
+import { Zap, Flame, Trash2, Download, X, Award, Share2 } from "lucide-react";
+import { createPortal } from "react-dom";
 import sovalemData from "@/data/sovalem_data.json";
 
 // Ratios de calcul basés sur la performance réelle 2025
@@ -90,16 +91,32 @@ interface CertificateModalProps {
 // Date de référence : 1er janvier 2026 à 00h00
 const START_2026 = new Date("2026-01-01T00:00:00").getTime();
 
+
+
 function CertificateModal({ isOpen, onClose, currentStats }: CertificateModalProps) {
     const [isDownloading, setIsDownloading] = useState(false);
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+        if (isOpen) {
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+        return () => { document.body.style.overflow = 'unset'; };
+    }, [isOpen]);
 
     const generateImage = useCallback(async () => {
+        // ... (generation logic remains exacty the same, just keeping it inside)
+        // For brevity in this replacement, I'm assuming I don't need to repeat the *entire* inner logic if I can just match the wrapping.
+        // But the tool requires replacing the block. So I will supply the full content of this function again to be safe.
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext('2d');
         if (!ctx) return null;
 
         const width = 1200;
-        const height = 1400; // Slightly taller for more content
+        const height = 1400;
         canvas.width = width;
         canvas.height = height;
 
@@ -254,6 +271,54 @@ function CertificateModal({ isOpen, onClose, currentStats }: CertificateModalPro
         return canvas.toDataURL("image/png");
     }, [currentStats]);
 
+    const handleShare = async () => {
+        setIsDownloading(true);
+        try {
+            const dataUrl = await generateImage();
+            if (!dataUrl) throw new Error("Erreur génération image");
+
+            const blob = await (await fetch(dataUrl)).blob();
+            const file = new File([blob], "certificat-sovalem.png", { type: "image/png" });
+
+            const shareData = {
+                title: 'Mon Impact SOVALEM 2026',
+                text: "Découvrez mon certificat d'impact environnemental avec SOVALEM ! 🌍\n\nVisualisez l'impact temps réel :",
+                url: 'https://sovalem-2026.vercel.app'
+            };
+
+            if (navigator.share) {
+                try {
+                    // Try to share with image
+                    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                        await navigator.share({
+                            ...shareData,
+                            files: [file]
+                        });
+                    } else {
+                        // Fallback: Share text + link only
+                        await navigator.share(shareData);
+                    }
+                } catch (e) {
+                    // AbortError or others
+                    console.log("Partage annulé ou échoué", e);
+                }
+            } else {
+                alert("Le partage n'est pas supporté sur ce navigateur.");
+            }
+        } catch (error) {
+            console.error("Erreur lors du partage:", error);
+            // Last resort fallback
+            if (navigator.share) {
+                await navigator.share({
+                    title: 'Mon Impact SOVALEM 2026',
+                    url: 'https://sovalem-2026.vercel.app'
+                });
+            }
+        } finally {
+            setIsDownloading(false);
+        }
+    };
+
     const handleDownload = async () => {
         setIsDownloading(true);
         try {
@@ -272,10 +337,11 @@ function CertificateModal({ isOpen, onClose, currentStats }: CertificateModalPro
         }
     };
 
-    if (!isOpen) return null;
+    if (!isOpen || !mounted) return null;
 
-    return (
-        <div className="fixed inset-0 z-50 flex items-start justify-center bg-black/90 backdrop-blur-md overflow-y-auto">
+    // Use Portal to render at body level
+    return createPortal(
+        <div className="fixed inset-0 z-[100] flex items-start justify-center bg-black/95 backdrop-blur-md overflow-y-auto">
             <motion.div
                 initial={{ opacity: 0, scale: 0.9, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -337,16 +403,17 @@ function CertificateModal({ isOpen, onClose, currentStats }: CertificateModalPro
 
                 <div className="flex gap-2">
                     <button
-                        onClick={handleDownload}
+                        onClick={handleShare}
                         disabled={isDownloading}
-                        className="w-full py-4 bg-gradient-to-r from-veolia-blue to-heat-orange text-white font-bold rounded-xl flex items-center justify-center gap-2 hover:opacity-90 transition-opacity shadow-lg disabled:opacity-50 disabled:cursor-not-allowed text-lg"
+                        className="flex-1 py-3 bg-gradient-to-r from-veolia-blue to-heat-orange text-white font-bold rounded-xl flex items-center justify-center gap-2 hover:opacity-90 transition-opacity shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                        <Download size={24} />
-                        {isDownloading ? 'Génération...' : 'Télécharger Certificat (HD)'}
+                        <Share2 size={18} />
+                        {isDownloading ? '...' : 'Partager'}
                     </button>
                 </div>
             </motion.div>
-        </div>
+        </div>,
+        document.body
     );
 }
 
@@ -367,7 +434,7 @@ export default function Live2026Dashboard() {
         };
 
         updateStats();
-        const interval = setInterval(updateStats, 100); // Update 10x per second for smooth animation
+        const interval = setInterval(updateStats, 100);
 
         return () => clearInterval(interval);
     }, []);
@@ -376,12 +443,12 @@ export default function Live2026Dashboard() {
     const tonnes = stats.dechets / 1000;
 
     return (
-        <section className="py-24 px-6 md:px-12 relative overflow-hidden" id="live-2026">
+        <section className="py-24 pt-40 px-6 md:px-12 relative overflow-hidden" id="live-2026">
             {/* Background gradient */}
             <div className="absolute inset-0 bg-gradient-to-br from-veolia-blue/10 via-black to-heat-orange/10" />
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-zinc-900/50 via-black to-black" />
 
-            <div className="max-w-6xl mx-auto relative z-10">
+            <div className="max-w-6xl mx-auto relative z-10 pb-40">
                 {/* Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -389,6 +456,7 @@ export default function Live2026Dashboard() {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
+// ... (rest of component is untouched, assuming diff matches, just adding pb-40 at the end of the container)
                     <div className="inline-flex items-center gap-2 px-4 py-2 bg-zinc-900/80 border border-zinc-800 rounded-full mb-6">
                         <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
                         <span className="text-zinc-400 text-sm font-medium">EN DIRECT</span>
@@ -477,8 +545,10 @@ export default function Live2026Dashboard() {
                 >
                     {/* Back to Top Button */}
                     <button
+                        // Check if we are on PC (md breakpoint is 768px) and NOT on touch device
                         onClick={() => {
-                            if (window.innerWidth >= 768) {
+                            const isPC = window.innerWidth >= 768 && !('ontouchstart' in window);
+                            if (isPC) {
                                 import('@/lib/smoothScroll').then(({ smoothScrollTo }) => {
                                     smoothScrollTo(0, 3000);
                                 });
@@ -505,7 +575,7 @@ export default function Live2026Dashboard() {
                 </motion.div>
             </div>
 
-            {/* Certificate Modal */}
+            {/* Certificate Modal - Portal logic is inside the component now */}
             <CertificateModal
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}

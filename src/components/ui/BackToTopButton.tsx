@@ -5,8 +5,9 @@ import { ArrowUp } from "lucide-react";
 
 export default function BackToTopButton() {
     const scrollToTop = () => {
-        // Pour PC (>= 768px), on garde le scroll doux et lent
-        if (window.innerWidth >= 768) {
+        const isPC = window.innerWidth >= 768 && !('ontouchstart' in window);
+
+        if (isPC) {
             import('@/lib/smoothScroll').then(({ smoothScrollTo }) => {
                 smoothScrollTo(0, 3000); // 3 seconds back to top
             });

@@ -81,8 +81,8 @@ export default function HeroStory() {
                         onClick={() => {
                             const targetElement = document.getElementById('live-2026');
                             if (targetElement) {
-                                // Check if we are on PC (md breakpoint is 768px)
-                                const isPC = window.innerWidth >= 768;
+                                // Check if we are on PC (md breakpoint is 768px) and NOT on touch device
+                                const isPC = window.innerWidth >= 768 && !('ontouchstart' in window);
 
                                 if (isPC) {
                                     // Calculate target position manually
