@@ -44,7 +44,7 @@ export default function FloatingAudioPlayer() {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1 }}
-            className="fixed bottom-6 left-6 md:bottom-8 md:right-8 md:left-auto z-50 flex flex-col items-end gap-2"
+            className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-30 flex flex-col items-end gap-2"
         >
             {/* Tooltip d'invitation (disparaît après lecture ou clic) */}
             <AnimatePresence>
@@ -61,8 +61,8 @@ export default function FloatingAudioPlayer() {
                 )}
             </AnimatePresence>
 
-            {/* Lecteur Audio Glassmorphism */}
-            <div className="backdrop-blur-md bg-white/5 border border-white/10 p-4 rounded-2xl shadow-2xl flex items-center gap-4 w-64 transition-all hover:bg-white/10 group">
+            {/* Lecteur Audio Glassmorphism - Horizontal on mobile */}
+            <div className="backdrop-blur-md bg-white/5 border border-white/10 p-3 md:p-4 rounded-xl md:rounded-2xl shadow-2xl flex items-center gap-2 md:gap-4 w-full max-w-sm md:w-64 transition-all hover:bg-white/10 group">
                 <audio
                     ref={audioRef}
                     src="/Media/briefing_sovalem_2026.mp3"
@@ -73,57 +73,32 @@ export default function FloatingAudioPlayer() {
 
                 <button
                     onClick={togglePlay}
-                    className="w-10 h-10 rounded-full bg-veolia-blue flex items-center justify-center text-white hover:bg-veolia-blue/80 transition-colors shadow-lg shadow-veolia-blue/20"
+                    className="w-9 h-9 md:w-10 md:h-10 rounded-full bg-veolia-blue flex items-center justify-center text-white hover:bg-veolia-blue/80 transition-colors shadow-lg shadow-veolia-blue/20 flex-shrink-0"
                 >
-                    {isPlaying ? <Pause size={18} fill="currentColor" /> : <Play size={18} fill="currentColor" className="ml-1" />}
+                    {isPlaying ? <Pause size={16} fill="currentColor" /> : <Play size={16} fill="currentColor" className="ml-0.5" />}
                 </button>
 
-                <div className="flex-1">
-                    <div className="flex justify-between items-center text-xs text-zinc-400 mb-1">
-                        <span className="font-medium text-white">Expert Sovalem</span>
-                        <span>{formatTime(currentTime)} / {formatTime(duration || 0)}</span>
+                <div className="flex-1 min-w-0">
+                    <div className="flex justify-between items-center text-[10px] md:text-xs text-zinc-400 mb-1">
+                        <span className="font-medium text-white truncate">Expert Sovalem</span>
+                        <span className="flex-shrink-0 ml-1">{formatTime(currentTime)} / {formatTime(duration || 0)}</span>
                     </div>
 
-                    {/* Visualizer / Progress Bar */}
-                    <div className="h-8 flex items-center gap-[2px] overflow-hidden">
-                        {isPlaying ? (
-                            // Fake waveform animation when playing
-                            Array.from({ length: 20 }).map((_, i) => (
-                                <motion.div
-                                    key={i}
-                                    className="w-1 bg-gradient-to-t from-veolia-blue to-emerald-400 rounded-full"
-                                    animate={{
-                                        height: [
-                                            Math.random() * 10 + 4,
-                                            Math.random() * 24 + 4,
-                                            Math.random() * 10 + 4
-                                        ]
-                                    }}
-                                    transition={{
-                                        duration: 0.5,
-                                        repeat: Infinity,
-                                        delay: i * 0.05,
-                                        ease: "easeInOut"
-                                    }}
-                                />
-                            ))
-                        ) : (
-                            // Static progress bar when paused
-                            <div className="w-full h-1 bg-zinc-800 rounded-full overflow-hidden">
-                                <div
-                                    className="h-full bg-veolia-blue transition-all duration-100"
-                                    style={{ width: `${(currentTime / duration) * 100}%` }}
-                                />
-                            </div>
-                        )}
+                    {/* Progress Bar only (no waveform on mobile) */}
+                    <div className="w-full h-1 bg-zinc-800 rounded-full overflow-hidden">
+                        <div
+                            className="h-full bg-veolia-blue transition-all duration-100"
+                            style={{ width: `${(currentTime / duration) * 100}%` }}
+                        />
                     </div>
                 </div>
 
                 <button
                     onClick={() => setIsVisible(false)}
-                    className="text-zinc-500 hover:text-white transition-colors"
+                    className="text-zinc-500 hover:text-white transition-colors flex-shrink-0"
                 >
-                    <X size={14} />
+                    <X size={12} className="md:hidden" />
+                    <X size={14} className="hidden md:block" />
                 </button>
             </div>
         </motion.div>

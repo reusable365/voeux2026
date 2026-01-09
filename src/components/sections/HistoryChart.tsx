@@ -32,8 +32,8 @@ export default function HistoryChart() {
                 </div>
 
                 {data.map((yearData, idx) => {
-                    // Réduction de 6% sur mobile pour mieux voir l'échelle
-                    const scaleFactor = 0.94; // 94% = réduction de 6%
+                    // Réduction de 12% sur mobile pour garantir que toutes les barres soient visibles
+                    const scaleFactor = 0.88; // 88% = réduction de 12%
                     const elecHeight = (yearData.mwh_electrique / maxProd) * 100 * scaleFactor;
                     const heatHeight = (yearData.mwh_thermique / maxProd) * 100 * scaleFactor;
                     const isSelected = selectedYear === yearData.annee;

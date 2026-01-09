@@ -360,24 +360,7 @@ export default function Live2026Dashboard() {
                 >
                     {/* Back to Top Button */}
                     <button
-                        onClick={() => {
-                            const startY = window.scrollY;
-                            const duration = 3000;
-                            let start: number | null = null;
-
-                            const step = (timestamp: number) => {
-                                if (!start) start = timestamp;
-                                const progress = Math.min((timestamp - start) / duration, 1);
-                                const easeProgress = progress < 0.5
-                                    ? 2 * progress * progress
-                                    : 1 - Math.pow(-2 * progress + 2, 2) / 2;
-                                window.scrollTo(0, startY * (1 - easeProgress));
-                                if (progress < 1) {
-                                    requestAnimationFrame(step);
-                                }
-                            };
-                            requestAnimationFrame(step);
-                        }}
+                        onClick={() => window.scrollTo({ top: 0, behavior: 'auto' })}
                         className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-veolia-blue to-heat-orange text-white font-bold rounded-full hover:shadow-[0_0_30px_rgba(0,69,135,0.5)] transition-all hover:scale-105"
                     >
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
