@@ -23,7 +23,7 @@ export default function HistoryChart() {
                 <p className="text-zinc-600 text-xs mt-2 md:hidden">Touchez une barre pour voir les détails</p>
             </div>
 
-            <div className="relative h-[350px] md:h-[400px] flex items-end justify-between gap-1 md:gap-4 border-b border-zinc-800 pb-2">
+            <div className="relative h-[350px] md:h-[400px] flex items-end justify-between gap-0.5 md:gap-4 border-b border-zinc-800 pb-2 pr-2 md:pr-0">
                 {/* Y-Axis scale (simplified) */}
                 <div className="absolute left-0 top-0 h-full flex flex-col justify-between text-[10px] text-zinc-600 -translate-x-full pr-4 pointer-events-none">
                     <span>{Math.round(maxProd).toLocaleString()}</span>
