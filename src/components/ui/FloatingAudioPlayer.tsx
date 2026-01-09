@@ -44,7 +44,7 @@ export default function FloatingAudioPlayer() {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1 }}
-            className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2"
+            className="fixed bottom-6 left-6 md:bottom-8 md:right-8 md:left-auto z-50 flex flex-col items-end gap-2"
         >
             {/* Tooltip d'invitation (disparaît après lecture ou clic) */}
             <AnimatePresence>
