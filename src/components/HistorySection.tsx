@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { cn } from "@/lib/utils";
 import HistoryChart from "./sections/HistoryChart";
-import CumulativeEnergyDashboard from "./sections/CumulativeEnergyDashboard";
+
 
 const milestones = [
     {
@@ -117,6 +117,8 @@ export default function HistorySection() {
 
                 {/* Cumulative Energy Dashboard */}
                 <CumulativeEnergyDashboard />
+
+
 
                 {/* Bonne Année 2026 CTA/Banner */}
                 <motion.div
