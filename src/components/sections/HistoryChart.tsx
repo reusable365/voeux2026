@@ -32,8 +32,8 @@ export default function HistoryChart() {
                 </div>
 
                 {data.map((yearData, idx) => {
-                    // Réduction de 3% sur mobile pour mieux voir l'échelle
-                    const scaleFactor = 0.97; // 97% = réduction de 3%
+                    // Réduction de 6% sur mobile pour mieux voir l'échelle
+                    const scaleFactor = 0.94; // 94% = réduction de 6%
                     const elecHeight = (yearData.mwh_electrique / maxProd) * 100 * scaleFactor;
                     const heatHeight = (yearData.mwh_thermique / maxProd) * 100 * scaleFactor;
                     const isSelected = selectedYear === yearData.annee;
@@ -73,8 +73,8 @@ export default function HistoryChart() {
                                     transition={{ duration: 0.8, delay: idx * 0.05, ease: "easeOut" }}
                                     style={{ height: `${elecHeight}%`, transformOrigin: "bottom" }}
                                     className={`flex-1 rounded-t-sm relative transition-all ${isSelected
-                                            ? 'bg-veolia-blue ring-2 ring-veolia-blue/50'
-                                            : 'bg-veolia-blue/80 group-hover:bg-veolia-blue'
+                                        ? 'bg-veolia-blue ring-2 ring-veolia-blue/50'
+                                        : 'bg-veolia-blue/80 group-hover:bg-veolia-blue'
                                         }`}
                                 >
                                     {/* Tooltip on hover (PC only) */}
@@ -91,8 +91,8 @@ export default function HistoryChart() {
                                     transition={{ duration: 0.8, delay: idx * 0.05 + 0.1, ease: "easeOut" }}
                                     style={{ height: `${heatHeight}%`, transformOrigin: "bottom" }}
                                     className={`flex-1 rounded-t-sm relative transition-all ${isSelected
-                                            ? 'bg-heat-orange ring-2 ring-heat-orange/50'
-                                            : 'bg-heat-orange/80 group-hover:bg-heat-orange'
+                                        ? 'bg-heat-orange ring-2 ring-heat-orange/50'
+                                        : 'bg-heat-orange/80 group-hover:bg-heat-orange'
                                         }`}
                                 >
                                     <div className="hidden md:block absolute -top-8 left-1/2 -translate-x-1/2 bg-zinc-900 border border-zinc-700 px-2 py-1 rounded text-[10px] text-white opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-20 pointer-events-none">
