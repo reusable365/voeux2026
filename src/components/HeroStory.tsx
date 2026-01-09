@@ -79,7 +79,10 @@ export default function HeroStory() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 2, duration: 1 }}
                         onClick={() => {
-                            const targetY = document.documentElement.scrollHeight - window.innerHeight;
+                            const targetElement = document.getElementById('live-2026');
+                            if (!targetElement) return;
+
+                            const targetY = targetElement.offsetTop;
                             const startY = window.scrollY;
                             const distance = targetY - startY;
                             const duration = 3000; // 3 secondes pour voir défiler
