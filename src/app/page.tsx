@@ -2,7 +2,6 @@ import HeroStory from "@/components/HeroStory";
 import HistorySection from "@/components/HistorySection";
 import ExcellenceNavire from "@/components/sections/ExcellenceNavire";
 import { ExplorationTechnique } from "@/components/ExplorationTechnique";
-import ForgeDesRessources from "@/components/sections/ForgeDesRessources";
 import EnergyTerritory from "@/components/sections/EnergyTerritory";
 import Live2026Dashboard from "@/components/sections/Live2026Dashboard";
 import { SmoothScroll } from "@/components/SmoothScroll";
@@ -17,7 +16,6 @@ export default function Home() {
           <HistorySection />
           <ExcellenceNavire />
           <ExplorationTechnique />
-          <ForgeDesRessources />
           <EnergyTerritory />
           <Live2026Dashboard />
         </div>
