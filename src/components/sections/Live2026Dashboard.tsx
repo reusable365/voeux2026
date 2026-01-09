@@ -358,33 +358,51 @@ function CertificateModal({ isOpen, onClose, currentStats }: CertificateModalPro
                 {/* HTML Preview */}
                 <div className="text-center mb-8">
                     <img src="/veolia-logo.png" className="h-8 mx-auto mb-4 opacity-90" alt="Veolia" />
-                    <h3 className="text-2xl font-black text-white mb-1">Certificat d'Impact</h3>
+                    <h3 className="text-2xl font-black text-white mb-1">Votre Certificat d'Impact</h3>
                     <p className="text-veolia-blue font-bold mb-6">SOVALEM × SYTRADEM</p>
 
                     {/* Bilan Cumulé */}
                     <div className="mb-6 p-4 bg-zinc-900/50 rounded-2xl border border-zinc-800 text-left">
                         <p className="text-zinc-500 text-xs uppercase tracking-widest mb-4 text-center">Bilan Cumulé 2011-2025</p>
 
-                        <div className="grid grid-cols-2 gap-y-6 gap-x-4">
-                            <div>
-                                <p className="text-lg font-black text-white">{CUMUL_ILLUSTRATIONS.tonnes.value.toLocaleString()} t</p>
-                                <p className="text-[10px] text-zinc-500 uppercase">Déchets</p>
-                                <p className="text-[10px] text-zinc-400 italic mt-1">💡 {CUMUL_ILLUSTRATIONS.tonnes.illu}</p>
+                        <div className="grid grid-cols-2 gap-4">
+                            {/* Déchets */}
+                            <div className="bg-zinc-950 p-4 rounded-xl border border-zinc-800 flex flex-col items-center justify-center">
+                                <p className="text-3xl font-black text-white mb-1">{CUMUL_ILLUSTRATIONS.tonnes.value.toLocaleString()}</p>
+                                <p className="text-[10px] text-zinc-500 uppercase tracking-wider mb-2">tonnes</p>
+                                <p className="text-[10px] text-zinc-400 italic border-t border-zinc-800 pt-2 w-full text-center">
+                                    💡 {CUMUL_ILLUSTRATIONS.tonnes.illu}
+                                </p>
                             </div>
-                            <div>
-                                <p className="text-lg font-black text-veolia-blue">{CUMUL_ILLUSTRATIONS.elec.value} GWh</p>
-                                <p className="text-[10px] text-zinc-500 uppercase">Électricité</p>
-                                <p className="text-[10px] text-veolia-blue/70 italic mt-1">💡 {CUMUL_ILLUSTRATIONS.elec.illu}</p>
+
+                            {/* Électricité */}
+                            <div className="bg-zinc-950 p-4 rounded-xl border border-veolia-blue/30 flex flex-col items-center justify-center relative overflow-hidden">
+                                <div className="absolute inset-0 bg-veolia-blue/5"></div>
+                                <p className="text-3xl font-black text-veolia-blue mb-1 relative z-10">{CUMUL_ILLUSTRATIONS.elec.value}</p>
+                                <p className="text-[10px] text-veolia-blue/70 uppercase tracking-wider mb-2 relative z-10">GWh élec</p>
+                                <p className="text-[10px] text-veolia-blue/60 italic border-t border-veolia-blue/20 pt-2 w-full text-center relative z-10">
+                                    ⚡ {CUMUL_ILLUSTRATIONS.elec.illu}
+                                </p>
                             </div>
-                            <div>
-                                <p className="text-lg font-black text-heat-orange">{CUMUL_ILLUSTRATIONS.chaleur.value} GWh</p>
-                                <p className="text-[10px] text-zinc-500 uppercase">Chaleur</p>
-                                <p className="text-[10px] text-heat-orange/70 italic mt-1">💡 {CUMUL_ILLUSTRATIONS.chaleur.illu}</p>
+
+                            {/* Chaleur */}
+                            <div className="bg-zinc-950 p-4 rounded-xl border border-heat-orange/30 flex flex-col items-center justify-center relative overflow-hidden">
+                                <div className="absolute inset-0 bg-heat-orange/5"></div>
+                                <p className="text-3xl font-black text-heat-orange mb-1 relative z-10">{CUMUL_ILLUSTRATIONS.chaleur.value}</p>
+                                <p className="text-[10px] text-heat-orange/70 uppercase tracking-wider mb-2 relative z-10">GWh chaleur</p>
+                                <p className="text-[10px] text-heat-orange/60 italic border-t border-heat-orange/20 pt-2 w-full text-center relative z-10">
+                                    🔥 {CUMUL_ILLUSTRATIONS.chaleur.illu}
+                                </p>
                             </div>
-                            <div>
-                                <p className="text-lg font-black text-white">{CUMUL_ILLUSTRATIONS.machefers.value / 1000}k t</p>
-                                <p className="text-[10px] text-zinc-500 uppercase">Mâchefers</p>
-                                <p className="text-[10px] text-zinc-400 italic mt-1">💡 {CUMUL_ILLUSTRATIONS.machefers.illu}</p>
+
+                            {/* Mâchefers */}
+                            <div className="bg-zinc-950 p-4 rounded-xl border border-zinc-800 flex flex-col items-center justify-center">
+                                {/* Fixed unit: value is 200, displayed as 200k t */}
+                                <p className="text-3xl font-black text-white mb-1">{CUMUL_ILLUSTRATIONS.machefers.value}k</p>
+                                <p className="text-[10px] text-zinc-500 uppercase tracking-wider mb-2">tonnes mâchefers</p>
+                                <p className="text-[10px] text-zinc-400 italic border-t border-zinc-800 pt-2 w-full text-center">
+                                    🛣️ {CUMUL_ILLUSTRATIONS.machefers.illu}
+                                </p>
                             </div>
                         </div>
                     </div>
