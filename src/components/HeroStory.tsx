@@ -78,7 +78,26 @@ export default function HeroStory() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 2, duration: 1 }}
-                        onClick={() => window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' })}
+                        onClick={() => {
+                            const targetY = document.documentElement.scrollHeight - window.innerHeight;
+                            const startY = window.scrollY;
+                            const distance = targetY - startY;
+                            const duration = 3000; // 3 secondes pour voir défiler
+                            let start: number | null = null;
+
+                            const step = (timestamp: number) => {
+                                if (!start) start = timestamp;
+                                const progress = Math.min((timestamp - start) / duration, 1);
+                                const easeProgress = progress < 0.5
+                                    ? 2 * progress * progress
+                                    : 1 - Math.pow(-2 * progress + 2, 2) / 2; // easeInOutQuad
+                                window.scrollTo(0, startY + distance * easeProgress);
+                                if (progress < 1) {
+                                    requestAnimationFrame(step);
+                                }
+                            };
+                            requestAnimationFrame(step);
+                        }}
                         className="mt-8 flex items-center gap-3 bg-veolia-blue hover:bg-veolia-blue/80 text-white px-8 py-4 rounded-full font-bold transition-all shadow-lg shadow-veolia-blue/20 hover:shadow-veolia-blue/40 text-base md:text-lg group"
                     >
                         <svg className="w-5 h-5 group-hover:rotate-12 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
