@@ -311,9 +311,9 @@ export default function Live2026Dashboard() {
                         transition={{ delay: 0.1 }}
                     >
                         <Odometer
-                            value={stats.elec}
-                            decimals={1}
-                            unit="kWh"
+                            value={stats.elec / 1000}
+                            decimals={3}
+                            unit="MWh"
                             label="Électricité injectée"
                             color="blue"
                             icon={<Zap size={32} />}
@@ -327,9 +327,9 @@ export default function Live2026Dashboard() {
                         transition={{ delay: 0.2 }}
                     >
                         <Odometer
-                            value={stats.chaleur}
-                            decimals={1}
-                            unit="kWh"
+                            value={stats.chaleur / 1000}
+                            decimals={3}
+                            unit="MWh"
                             label="Chaleur partagée"
                             color="orange"
                             icon={<Flame size={32} />}
@@ -346,8 +346,8 @@ export default function Live2026Dashboard() {
                 >
                     <p className="text-zinc-600 text-sm">
                         À chaque seconde : <span className="text-white font-semibold">{RATIOS.dechets_kg_par_sec} kg</span> valorisés •
-                        <span className="text-veolia-blue font-semibold"> {RATIOS.elec_kwh_par_sec} kWh</span> électriques •
-                        <span className="text-heat-orange font-semibold"> {RATIOS.chaleur_kwh_par_sec} kWh</span> thermiques
+                        <span className="text-veolia-blue font-semibold"> {(RATIOS.elec_kwh_par_sec / 1000).toFixed(4)} MWh</span> électriques •
+                        <span className="text-heat-orange font-semibold"> {(RATIOS.chaleur_kwh_par_sec / 1000).toFixed(4)} MWh</span> thermiques
                     </p>
                 </motion.div>
 

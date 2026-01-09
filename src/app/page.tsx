@@ -7,6 +7,7 @@ import Live2026Dashboard from "@/components/sections/Live2026Dashboard";
 import FactoryLife from "@/components/FactoryLife";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import MediaSection from "@/components/sections/MediaSection";
+import BackToTopButton from "@/components/ui/BackToTopButton";
 
 export default function Home() {
   return (
@@ -19,8 +20,9 @@ export default function Home() {
           <ExcellenceNavire />
           <ExplorationTechnique />
           <EnergyTerritory />
-          <Live2026Dashboard />
           <MediaSection />
+          <Live2026Dashboard />
+          <BackToTopButton />
         </div>
       </main>
     </SmoothScroll>

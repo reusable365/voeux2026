@@ -72,6 +72,20 @@ export default function HeroStory() {
                     <p className="max-w-2xl mx-auto text-lg md:text-xl text-white/70 leading-relaxed font-light">
                         L'unité <span className="text-white font-medium border-b border-veolia-blue pb-0.5">SOVALEM</span> transforme chaque jour les déchets du territoire en ressources essentielles : <span className="text-heat-orange font-medium">chaleur</span> et <span className="text-veolia-blue font-medium">électricité</span>.
                     </p>
+
+                    {/* CTA Button - Scroll to Certificate */}
+                    <motion.button
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 2, duration: 1 }}
+                        onClick={() => window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' })}
+                        className="mt-8 flex items-center gap-3 bg-veolia-blue hover:bg-veolia-blue/80 text-white px-8 py-4 rounded-full font-bold transition-all shadow-lg shadow-veolia-blue/20 hover:shadow-veolia-blue/40 text-base md:text-lg group"
+                    >
+                        <svg className="w-5 h-5 group-hover:rotate-12 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                        Générer votre rapport
+                    </motion.button>
                 </div>
             </motion.div>
 
