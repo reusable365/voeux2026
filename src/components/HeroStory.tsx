@@ -3,6 +3,7 @@
 import { motion, useSpring, useTransform, animate } from "framer-motion";
 import { useEffect, useState } from "react";
 import { CONVERSION_CONSTANTS } from "@/lib/constants";
+import BackgroundVideo from "./ui/BackgroundVideo";
 
 export default function HeroStory() {
     const [displayCount, setDisplayCount] = useState(0);
@@ -19,6 +20,9 @@ export default function HeroStory() {
 
     return (
         <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden industrial-grid bg-black">
+            {/* Background Video (Immersive) */}
+            <BackgroundVideo />
+
             {/* Veolia Logo */}
             <div className="absolute top-6 right-6 z-20">
                 <img

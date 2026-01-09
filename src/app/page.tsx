@@ -6,6 +6,7 @@ import EnergyTerritory from "@/components/sections/EnergyTerritory";
 import Live2026Dashboard from "@/components/sections/Live2026Dashboard";
 import FactoryLife from "@/components/FactoryLife";
 import { SmoothScroll } from "@/components/SmoothScroll";
+import MediaSection from "@/components/sections/MediaSection";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
           <ExplorationTechnique />
           <EnergyTerritory />
           <Live2026Dashboard />
+          <MediaSection />
         </div>
       </main>
     </SmoothScroll>
