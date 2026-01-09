@@ -465,7 +465,7 @@ export default function Live2026Dashboard() {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-// ... (rest of component is untouched, assuming diff matches, just adding pb-40 at the end of the container)
+
                     <div className="inline-flex items-center gap-2 px-4 py-2 bg-zinc-900/80 border border-zinc-800 rounded-full mb-6">
                         <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
                         <span className="text-zinc-400 text-sm font-medium">EN DIRECT</span>
