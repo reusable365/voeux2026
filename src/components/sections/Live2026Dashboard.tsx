@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { Zap, Flame, Trash2, Download, X, Award, Share2 } from "lucide-react";
 import { createPortal } from "react-dom";
+// Force deploy update
 import sovalemData from "@/data/sovalem_data.json";
 
 // Ratios de calcul basés sur la performance réelle 2025
