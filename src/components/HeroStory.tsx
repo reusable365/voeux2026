@@ -81,7 +81,24 @@ export default function HeroStory() {
                         onClick={() => {
                             const targetElement = document.getElementById('live-2026');
                             if (targetElement) {
-                                targetElement.scrollIntoView({ behavior: 'auto', block: 'start' });
+                                // Check if we are on PC (md breakpoint is 768px)
+                                const isPC = window.innerWidth >= 768;
+
+                                if (isPC) {
+                                    // Calculate target position manually
+                                    const rect = targetElement.getBoundingClientRect();
+                                    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+                                    const targetPosition = rect.top + scrollTop + 90; // Offset to center content (skip header/padding)
+
+                                    import('@/lib/smoothScroll').then(({ smoothScrollTo }) => {
+                                        smoothScrollTo(targetPosition, 2500); // 2.5 seconds for "premium" feel
+                                    });
+                                } else {
+                                    targetElement.scrollIntoView({
+                                        behavior: 'auto',
+                                        block: 'start'
+                                    });
+                                }
                             }
                         }}
                         className="mt-8 flex items-center gap-3 bg-veolia-blue hover:bg-veolia-blue/80 text-white px-8 py-4 rounded-full font-bold transition-all shadow-lg shadow-veolia-blue/20 hover:shadow-veolia-blue/40 text-base md:text-lg group"

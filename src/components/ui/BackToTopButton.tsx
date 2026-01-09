@@ -5,22 +5,15 @@ import { ArrowUp } from "lucide-react";
 
 export default function BackToTopButton() {
     const scrollToTop = () => {
-        const startY = window.scrollY;
-        const duration = 3000; // 3 secondes pour voir remonter
-        let start: number | null = null;
-
-        const step = (timestamp: number) => {
-            if (!start) start = timestamp;
-            const progress = Math.min((timestamp - start) / duration, 1);
-            const easeProgress = progress < 0.5
-                ? 2 * progress * progress
-                : 1 - Math.pow(-2 * progress + 2, 2) / 2; // easeInOutQuad
-            window.scrollTo(0, startY * (1 - easeProgress));
-            if (progress < 1) {
-                requestAnimationFrame(step);
-            }
-        };
-        requestAnimationFrame(step);
+        // Pour PC (>= 768px), on garde le scroll doux et lent
+        if (window.innerWidth >= 768) {
+            import('@/lib/smoothScroll').then(({ smoothScrollTo }) => {
+                smoothScrollTo(0, 3000); // 3 seconds back to top
+            });
+        } else {
+            // Pour Mobile, retour instantané
+            window.scrollTo({ top: 0, behavior: "auto" });
+        }
     };
 
     return (
