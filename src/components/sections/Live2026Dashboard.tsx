@@ -401,14 +401,23 @@ function CertificateModal({ isOpen, onClose, currentStats }: CertificateModalPro
                     </div>
                 </div>
 
-                <div className="flex gap-2">
+                <div className="flex flex-col md:flex-row gap-3">
                     <button
                         onClick={handleShare}
                         disabled={isDownloading}
                         className="flex-1 py-3 bg-gradient-to-r from-veolia-blue to-heat-orange text-white font-bold rounded-xl flex items-center justify-center gap-2 hover:opacity-90 transition-opacity shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                         <Share2 size={18} />
-                        {isDownloading ? '...' : 'Partager'}
+                        {isDownloading ? '...' : 'Partager (Mobile)'}
+                    </button>
+
+                    <button
+                        onClick={handleDownload}
+                        disabled={isDownloading}
+                        className="flex-1 py-3 bg-zinc-800 text-white font-bold rounded-xl flex items-center justify-center gap-2 hover:bg-zinc-700 transition-colors border border-zinc-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                        <Download size={18} />
+                        {isDownloading ? '...' : 'Enregistrer (PC)'}
                     </button>
                 </div>
             </motion.div>
