@@ -148,36 +148,35 @@ export default function ExcellenceNavire() {
                                 </div>
 
                                 {/* Content - Collapsible on Mobile, Visible on Desktop (grid mode) */}
-                                <div className="block md:block">
-                                    {/* On Mobile: Animate Height */}
-                                    <AnimatePresence>
-                                        {(isOpen || typeof window !== 'undefined' && window.innerWidth >= 768) && (
-                                            <motion.div
-                                                initial={{ height: 0, opacity: 0 }}
-                                                animate={{ height: "auto", opacity: 1 }}
-                                                exit={{ height: 0, opacity: 0 }}
-                                                className="px-6 pb-6 md:px-8 md:pb-8 md:pt-0"
-                                            >
-                                                <ul className="space-y-4 md:grid md:grid-cols-2 md:gap-4 md:space-y-0 pt-4 border-t border-zinc-800/50 md:border-none">
-                                                    {item.content.map((point, i) => (
-                                                        <li key={i} className="flex flex-col gap-1">
-                                                            <span className={`text-sm font-semibold ${item.color} opacity-90`}>
-                                                                {point.label}
-                                                            </span>
-                                                            <span className="text-sm text-zinc-400 leading-snug">
-                                                                {point.val}
-                                                            </span>
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                            </motion.div>
-                                        )}
-                                    </AnimatePresence>
+                                <div>
+                                    {/* On Mobile: Animate Height - HIDDEN ON DESKTOP to avoid duplication */}
+                                    <div className="md:hidden">
+                                        <AnimatePresence>
+                                            {isOpen && (
+                                                <motion.div
+                                                    initial={{ height: 0, opacity: 0 }}
+                                                    animate={{ height: "auto", opacity: 1 }}
+                                                    exit={{ height: 0, opacity: 0 }}
+                                                    className="px-6 pb-6"
+                                                >
+                                                    <ul className="space-y-4 pt-4 border-t border-zinc-800/50">
+                                                        {item.content.map((point, i) => (
+                                                            <li key={i} className="flex flex-col gap-1">
+                                                                <span className={`text-sm font-semibold ${item.color} opacity-90`}>
+                                                                    {point.label}
+                                                                </span>
+                                                                <span className="text-sm text-zinc-400 leading-snug">
+                                                                    {point.val}
+                                                                </span>
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                </motion.div>
+                                            )}
+                                        </AnimatePresence>
+                                    </div>
 
-                                    {/* Desktop Only: Always Visible Content override via CSS if needed, 
-                      but here we handle logic slightly differently. 
-                      Actually, for the "Bento" look, we want content visible on desktop always.
-                  */}
+                                    {/* Desktop Only: Always Visible Content (The "nice block" user liked) */}
                                     <div className="hidden md:grid grid-cols-2 gap-6 px-8 pb-8">
                                         {item.content.map((point, i) => (
                                             <div key={i} className="flex flex-col gap-1">
@@ -191,6 +190,7 @@ export default function ExcellenceNavire() {
                                             </div>
                                         ))}
                                     </div>
+
                                 </div>
 
                                 {/* Decorative Glow */}
