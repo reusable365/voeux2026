@@ -1,5 +1,6 @@
 import HeroStory from "@/components/HeroStory";
 import HistorySection from "@/components/HistorySection";
+import ExcellenceNavire from "@/components/sections/ExcellenceNavire";
 import { ExplorationTechnique } from "@/components/ExplorationTechnique";
 import ForgeDesRessources from "@/components/sections/ForgeDesRessources";
 import EnergyTerritory from "@/components/sections/EnergyTerritory";
@@ -14,6 +15,7 @@ export default function Home() {
         <div className="relative w-full">
           <HeroStory />
           <HistorySection />
+          <ExcellenceNavire />
           <ExplorationTechnique />
           <ForgeDesRessources />
           <EnergyTerritory />
