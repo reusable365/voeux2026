@@ -63,10 +63,13 @@ export default function MediaSection() {
                         className="group relative bg-zinc-900/50 border border-white/10 rounded-2xl overflow-hidden aspect-video flex flex-col cursor-pointer shadow-lg hover:shadow-heat-orange/20 transition-all"
                         onClick={() => openVideo("/Media/video_background.mp4")}
                     >
-                        <img
-                            src="/Media/factory_thumbnail.png"
-                            alt="Atmosphère Usine"
+                        <video
+                            src="/Media/video_background.mp4"
+                            muted
+                            loop
                             className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity"
+                            onMouseOver={(e) => e.currentTarget.play()}
+                            onMouseOut={(e) => e.currentTarget.pause()}
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90" />
 
