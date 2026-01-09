@@ -351,13 +351,42 @@ export default function Live2026Dashboard() {
                     </p>
                 </motion.div>
 
-                {/* Certificate Button */}
+                {/* Action Buttons - Same Line */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="text-center"
+                    className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6"
                 >
+                    {/* Back to Top Button */}
+                    <button
+                        onClick={() => {
+                            const startY = window.scrollY;
+                            const duration = 3000;
+                            let start: number | null = null;
+
+                            const step = (timestamp: number) => {
+                                if (!start) start = timestamp;
+                                const progress = Math.min((timestamp - start) / duration, 1);
+                                const easeProgress = progress < 0.5
+                                    ? 2 * progress * progress
+                                    : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+                                window.scrollTo(0, startY * (1 - easeProgress));
+                                if (progress < 1) {
+                                    requestAnimationFrame(step);
+                                }
+                            };
+                            requestAnimationFrame(step);
+                        }}
+                        className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-veolia-blue to-heat-orange text-white font-bold rounded-full hover:shadow-[0_0_30px_rgba(0,69,135,0.5)] transition-all hover:scale-105"
+                    >
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                        </svg>
+                        Commencer le voyage
+                    </button>
+
+                    {/* Certificate Button */}
                     <button
                         onClick={() => setIsModalOpen(true)}
                         className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-veolia-blue to-heat-orange text-white font-bold rounded-full hover:shadow-[0_0_30px_rgba(0,69,135,0.5)] transition-all hover:scale-105"
