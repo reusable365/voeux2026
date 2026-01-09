@@ -3,12 +3,29 @@
 import { motion } from "framer-motion";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { Zap, Flame, Trash2, Download, X, Award } from "lucide-react";
+import sovalemData from "@/data/sovalem_data.json";
 
-// Ratios de calcul basés sur la performance 2025
+// Ratios de calcul basés sur la performance réelle 2025
 const RATIOS = {
-    dechets_kg_par_sec: 2.6,      // 74 698 tonnes / 31 536 000 sec ≈ 2.37 → arrondi 2.6
-    elec_kwh_par_sec: 1.2,        // 35 093 MWh / 31 536 000 sec × 1000 ≈ 1.11 → arrondi 1.2
-    chaleur_kwh_par_sec: 0.7,     // 21 519 MWh / 31 536 000 sec × 1000 ≈ 0.68 → arrondi 0.7
+    dechets_kg_par_sec: Number((sovalemData.stats_2025.tonnage_incinere / 31536000 * 1000).toFixed(2)),
+    elec_kwh_par_sec: Number((sovalemData.stats_2025.mwh_electrique / 31536000 * 1000).toFixed(1)),
+    chaleur_kwh_par_sec: Number((sovalemData.stats_2025.mwh_thermique / 31536000 * 1000).toFixed(1)),
+};
+
+// Données cumulées depuis 2011
+const CUMUL_STATS = {
+    tonnes: sovalemData.historique.tonnage_cumule,
+    elec_gwh: Math.round(388000 / 1000),
+    chaleur_gwh: Math.round(210000 / 1000),
+    tours_eiffel: 90,
+};
+
+// Performance 2025
+const PERF_2025 = {
+    heures_service: sovalemData.stats_2025.heures_fonct,
+    tonnes_valorisees: sovalemData.stats_2025.tonnage_incinere,
+    elec_mwh: sovalemData.stats_2025.mwh_electrique,
+    chaleur_mwh: sovalemData.stats_2025.mwh_thermique,
 };
 
 interface OdometerProps {
@@ -61,23 +78,6 @@ interface CertificateModalProps {
     onClose: () => void;
     currentStats: { dechets: number; elec: number; chaleur: number };
 }
-
-// Données cumulées depuis 2011
-const CUMUL_STATS = {
-    tonnes: 978165,
-    elec_gwh: 388,
-    chaleur_gwh: 210,
-    tours_eiffel: 90,
-};
-
-// Performance 2025
-const PERF_2025 = {
-    heures_service: 7822,
-    tonnes_valorisees: 74698,
-    elec_mwh: 35093,
-    chaleur_mwh: 21519,
-};
-
 // Date de référence : 1er janvier 2026 à 00h00
 const START_2026 = new Date("2026-01-01T00:00:00").getTime();
 

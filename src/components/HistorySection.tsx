@@ -114,6 +114,7 @@ export default function HistorySection() {
                     className="mt-32 pt-24 border-t border-zinc-900 relative"
                 >
                     <HistoryChart />
+                    <CumulativeEnergyDashboard />
                 </motion.div>
 
 

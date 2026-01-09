@@ -9,20 +9,18 @@ const CUMUL_DATA = {
     tonnage: 978165,           // tonnes valorisées
     electricite_mwh: 388000,   // MWh électriques cumulés
     chaleur_mwh: 210000,       // MWh thermiques cumulés
-    machefers_tonnes: 200000,  // ~14 000 t/an x 15 ans (rapports 2021-2024)
-    ferrailles_tonnes: 20000,  // ~1 350 t/an x 15 ans (rapports 2021-2024)
-    heures_fonct: 112000,      // ~8000h x 14 ans
+    machefers_tonnes: 200000,  // ~14 000 t/an x 15 ans
+    ferrailles_tonnes: 20000,  // ~1 350 t/an x 15 ans
+    heures_fonct: 112000,      // ~8 000h/an x 14 ans
 };
 
 // Équivalences pédagogiques - DONNÉES VÉRIFIÉES
 const EQUIVALENCES = {
     foyers_par_an: 11000,             // foyers alimentés chaque année (ville de Provins)
-    smartphones_charges: 25800000000, // 388 GWh / 15 Wh par charge
-    douches_chaudes: 84000000,        // 210 GWh / 2.5 kWh par douche
-    // Mâchefers: autoroute Montereau-Paris (~70 km de sous-couches routières)
-    km_autoroute: 70,
-    // Ferrailles: 2x le poids de la Tour Eiffel (10 000 t chacune)
-    tours_eiffel_metal: 2,
+    smartphones_charges: 25800000000, // 25,8 milliards
+    douches_chaudes: 84000000,        // 84 millions
+    km_autoroute: 70,                 // Autoroute Montereau-Paris
+    tours_eiffel_metal: 2,            // 2x Tour Eiffel
 };
 
 interface StatCardProps {
@@ -130,18 +128,18 @@ export default function CumulativeEnergyDashboard() {
                 <StatCard
                     value={CUMUL_DATA.electricite_mwh}
                     unit="MWh"
-                    label="Électricité produite (cumulé)"
+                    label="Électricité cumulée"
                     color="blue"
                     icon={<Zap size={24} />}
                     equivalenceValue="La ville de Provins"
-                    equivalence="alimentée en électricité chaque année depuis 15 ans (~11 000 foyers)"
+                    equivalence="alimentée chaque année depuis 15 ans (~11 000 foyers)"
                 />
 
                 {/* Chaleur */}
                 <StatCard
                     value={CUMUL_DATA.chaleur_mwh}
                     unit="MWh"
-                    label="Chaleur livrée à Coriance (cumulé)"
+                    label="Chaleur cumulée"
                     color="orange"
                     icon={<Flame size={24} />}
                     equivalenceValue={EQUIVALENCES.douches_chaudes.toLocaleString()}
@@ -152,11 +150,11 @@ export default function CumulativeEnergyDashboard() {
                 <StatCard
                     value={CUMUL_DATA.machefers_tonnes}
                     unit="tonnes"
-                    label="Mâchefers valorisés (REP)"
+                    label="Mâchefers valorisés"
                     color="gray"
                     icon={<Mountain size={24} />}
                     equivalenceValue="Autoroute Montereau-Paris"
-                    equivalence="en sous-couches routières (~70 km sans puiser dans les carrières)"
+                    equivalence="en sous-couches routières (~70 km)"
                 />
 
                 {/* Ferrailles */}
@@ -174,7 +172,7 @@ export default function CumulativeEnergyDashboard() {
                 <StatCard
                     value={CUMUL_DATA.heures_fonct}
                     unit="heures"
-                    label="Fonctionnement cumulé"
+                    label="Heures de fonctionnement"
                     color="blue"
                     icon={<Users size={24} />}
                     equivalenceValue="~8 000h/an"
