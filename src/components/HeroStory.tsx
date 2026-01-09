@@ -82,7 +82,7 @@ export default function HeroStory() {
                             const targetElement = document.getElementById('live-2026');
                             if (!targetElement) return;
 
-                            const targetY = targetElement.offsetTop;
+                            const targetY = targetElement.offsetTop + 120; // Offset pour voir tout le contenu
                             const startY = window.scrollY;
                             const distance = targetY - startY;
                             const duration = 3000; // 3 secondes pour voir défiler
